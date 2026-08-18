@@ -20,7 +20,11 @@ function Footer() {
   return (
     <footer>
       <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="mt-10 grid grid-cols-1 items-end gap-6 border-t border-border pt-8 sm:grid-cols-4">
+        <p className="text-base text-white/60 sm:text-lg">
+          Ou também, conecte-se por aqui:
+        </p>
+
+        <div className="mt-6 grid grid-cols-1 items-end gap-6 border-t border-border pt-8 sm:grid-cols-4">
           {SOCIALS.map((social) => (
             <a
               key={social.label}
