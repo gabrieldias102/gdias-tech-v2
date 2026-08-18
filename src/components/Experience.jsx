@@ -284,13 +284,13 @@ function Experience() {
             onClick={() => scrollToIndex(index)}
             aria-label={`Ir para item ${index + 1} de ${SET_SIZE}`}
             aria-current={activeIndex === index}
-            className="flex h-8 w-8 items-center justify-center"
+            className="flex h-6 w-6 items-center justify-center sm:h-8 sm:w-8"
           >
             <span
-              className={`block h-2 rounded-full transition-all ${
+              className={`block h-1.5 rounded-full transition-all sm:h-2 ${
                 activeIndex === index
-                  ? "w-6 bg-primary"
-                  : "w-2 bg-border hover:bg-white/40"
+                  ? "w-4 bg-primary sm:w-6"
+                  : "w-1.5 bg-border hover:bg-white/40 sm:w-2"
               }`}
             />
           </button>

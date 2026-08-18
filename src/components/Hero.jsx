@@ -1,3 +1,18 @@
+import ScrambleText from "./ScrambleText";
+
+const SCRAMBLE_WORDS = [
+  "Escalável.",
+  "Resiliente.",
+  "Confiável.",
+  "Eficiente.",
+  "Inteligente.",
+  "Moderna.",
+  "Segura.",
+  "Rápida.",
+  "Sustentável.",
+  "Inovadora.",
+];
+
 function Hero() {
   return (
     <section
@@ -14,7 +29,7 @@ function Hero() {
           Infraestrutura
         </span>
         <span className="block">Digital</span>
-        <span className="block">Escalável.</span>
+        <ScrambleText words={SCRAMBLE_WORDS} className="block" />
       </h1>
 
       <div className="mt-10 grid gap-8 pt-8 md:grid-cols-2 md:items-end">
