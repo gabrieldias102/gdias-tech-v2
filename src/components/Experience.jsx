@@ -271,7 +271,13 @@ function Experience() {
           item.type === "photo" ? (
             <PhotoCard key={item.key} src={item.src} index={item.index} />
           ) : (
-            <ExperienceCard key={item.key} {...item} />
+            <ExperienceCard
+              key={item.key}
+              period={item.period}
+              role={item.role}
+              company={item.company}
+              description={item.description}
+            />
           ),
         )}
       </div>
