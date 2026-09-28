@@ -1,20 +1,6 @@
-const PROJECTS = [
-  {
-    name: "Caderneta.",
-    image: "/public/site-images/caderneta.png",
-    url: "https://caderneta.gdias.dev.br",
-  },
-  {
-    name: "Projeto Y",
-    image: "/projects/projeto-y.jpg",
-    url: "https://exemplo.com",
-  },
-  {
-    name: "Projeto Z",
-    image: "/projects/projeto-z.jpg",
-    url: "https://exemplo.com",
-  },
-];
+import { useEffect, useState } from "react";
+
+const PROJECTS_URL = "/projects.json";
 
 function ProjectCard({ name, image, url }) {
   return (
@@ -45,6 +31,26 @@ function ProjectCard({ name, image, url }) {
 }
 
 function Projects() {
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(PROJECTS_URL, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then(setProjects)
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Falha ao carregar projetos:", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
+
   return (
     <section
       id="projetos"
@@ -56,7 +62,7 @@ function Projects() {
       </h2>
 
       <div className="mt-12 grid gap-6 md:grid-cols-2">
-        {PROJECTS.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.name} {...project} />
         ))}
       </div>
