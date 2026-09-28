@@ -16,7 +16,7 @@
     "url": "https://terminal.gdias.dev.br",
     "description": "Terminal é portfólio no estilo terminal retrô: tela verde de fósforo, scanlines e navegação por comandos de texto.",
     "stack": ["Vite", "Javascript", "TypeScript", "CSS"],
-    "repo": "https://github.com/gdias/terminal",
+    "repo": "https://github.com/gdias/bbs-server-portifolio",
     "year": 2026
   }
 ]
