@@ -1,0 +1,137 @@
+[
+  {
+    "title": "Linguagens",
+    "items": [
+      "JavaScript",
+      "TypeScript",
+      "Python",
+      "Java",
+      "PHP",
+      "Bash"
+    ]
+  },
+  {
+    "title": "Frontend",
+    "items": [
+      "React",
+      "Next.js",
+      "Vue.js",
+      "Nuxt.js",
+      "Angular",
+      "jQuery",
+      "Tailwind",
+      "Bootstrap",
+      "MUI",
+      "Shadcn",
+      "Styled Components",
+      "Sass",
+      "Framer Motion",
+      "Redux",
+      "Zustand"
+    ]
+  },
+  {
+    "title": "Backend",
+    "items": [
+      "Node.js",
+      "Express",
+      "NestJS",
+      "Laravel",
+      "FastAPI"
+    ]
+  },
+  {
+    "title": "Banco/ORM",
+    "items": [
+      "PostgreSQL",
+      "MySQL",
+      "MariaDB",
+      "SQL Server",
+      "SQLite",
+      "Supabase",
+      "Prisma"
+    ]
+  },
+  {
+    "title": "DevOps/Cloud",
+    "items": [
+      "Docker",
+      "Docker Compose",
+      "Azure",
+      "Vercel",
+      "Cloudflare",
+      "Firebase",
+      "Ansible",
+      "Jenkins",
+      "GitHub Actions",
+      "GitLab CI/CD",
+      "Azure DevOps",
+      "Nginx",
+      "Apache",
+      "Linux"
+    ]
+  },
+  {
+    "title": "Testes/Qualidade",
+    "items": [
+      "Jest",
+      "Vitest",
+      "Cypress",
+      "PHPUnit",
+      "React Testing Library",
+      "Storybook",
+      "SonarQube",
+      "ESLint",
+      "Prettier",
+      "Grafana"
+    ]
+  },
+  {
+    "title": "API/Integrações",
+    "items": [
+      "REST",
+      "GraphQL",
+      "OAuth2",
+      "JWT",
+      "Swagger",
+      "Postman",
+      "Axios",
+      "Fetch"
+    ]
+  },
+  {
+    "title": "Ferramentas",
+    "items": [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "Bitbucket",
+      "VS Code",
+      "Visual Studio",
+      "IntelliJ",
+      "PHPStorm",
+      "WebStorm",
+      "DBeaver",
+      "SSMS",
+      "npm",
+      "Yarn",
+      "pnpm",
+      "Chocolatey",
+      "Homebrew"
+    ]
+  },
+  {
+    "title": "IA/Dados",
+    "items": [
+      "OpenAI API",
+      "Anthropic API",
+      "Hugging Face",
+      "TensorFlow",
+      "PyTorch",
+      "Pandas",
+      "NumPy",
+      "Power BI",
+      "n8n"
+    ]
+  }
+]

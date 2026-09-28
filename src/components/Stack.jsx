@@ -1,129 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-const STACK = [
-  {
-    title: "Linguagens",
-    items: ["JavaScript", "TypeScript", "Python", "Java", "PHP", "Bash"],
-  },
-  {
-    title: "Frontend",
-    items: [
-      "React",
-      "Next.js",
-      "Vue.js",
-      "Nuxt.js",
-      "Angular",
-      "jQuery",
-      "Tailwind",
-      "Bootstrap",
-      "MUI",
-      "Shadcn",
-      "Styled Components",
-      "Sass",
-      "Framer Motion",
-      "Redux",
-      "Zustand",
-    ],
-  },
-  {
-    title: "Backend",
-    items: ["Node.js", "Express", "NestJS", "Laravel", "FastAPI"],
-  },
-  {
-    title: "Banco/ORM",
-    items: [
-      "PostgreSQL",
-      "MySQL",
-      "MariaDB",
-      "SQL Server",
-      "SQLite",
-      "Supabase",
-      "Prisma",
-    ],
-  },
-  {
-    title: "DevOps/Cloud",
-    items: [
-      "Docker",
-      "Docker Compose",
-      "Azure",
-      "Vercel",
-      "Cloudflare",
-      "Firebase",
-      "Ansible",
-      "Jenkins",
-      "GitHub Actions",
-      "GitLab CI/CD",
-      "Azure DevOps",
-      "Nginx",
-      "Apache",
-      "Linux",
-    ],
-  },
-  {
-    title: "Testes/Qualidade",
-    items: [
-      "Jest",
-      "Vitest",
-      "Cypress",
-      "PHPUnit",
-      "React Testing Library",
-      "Storybook",
-      "SonarQube",
-      "ESLint",
-      "Prettier",
-      "Grafana",
-    ],
-  },
-  {
-    title: "API/Integrações",
-    items: [
-      "REST",
-      "GraphQL",
-      "OAuth2",
-      "JWT",
-      "Swagger",
-      "Postman",
-      "Axios",
-      "Fetch",
-    ],
-  },
-  {
-    title: "Ferramentas",
-    items: [
-      "Git",
-      "GitHub",
-      "GitLab",
-      "Bitbucket",
-      "VS Code",
-      "Visual Studio",
-      "IntelliJ",
-      "PHPStorm",
-      "WebStorm",
-      "DBeaver",
-      "SSMS",
-      "npm",
-      "Yarn",
-      "pnpm",
-      "Chocolatey",
-      "Homebrew",
-    ],
-  },
-  {
-    title: "IA/Dados",
-    items: [
-      "OpenAI API",
-      "Anthropic API",
-      "Hugging Face",
-      "TensorFlow",
-      "PyTorch",
-      "Pandas",
-      "NumPy",
-      "Power BI",
-      "n8n",
-    ],
-  },
-];
+const STACK_URL = "/stack.json";
 
 function StackItem({ group, isOpen, onToggle }) {
   return (
@@ -169,13 +46,35 @@ function StackItem({ group, isOpen, onToggle }) {
   );
 }
 
-const STACK_COLUMNS = [STACK.slice(0, 5), STACK.slice(5)];
-
-const ALL_TITLES = STACK.map((group) => group.title);
-
 function Stack() {
-  const [openTitles, setOpenTitles] = useState(() => new Set([STACK[0].title]));
-  const allOpen = ALL_TITLES.every((title) => openTitles.has(title));
+  const [stack, setStack] = useState([]);
+  const [openTitles, setOpenTitles] = useState(() => new Set());
+
+  useEffect(() => {
+    const controller = new AbortController();
+
+    fetch(STACK_URL, { signal: controller.signal })
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
+      .then((data) => {
+        setStack(data);
+        setOpenTitles(new Set(data.slice(0, 1).map((group) => group.title)));
+      })
+      .catch((error) => {
+        if (error.name !== "AbortError") {
+          console.error("Falha ao carregar stack:", error);
+        }
+      });
+
+    return () => controller.abort();
+  }, []);
+
+  const stackColumns = [stack.slice(0, 5), stack.slice(5)];
+  const allTitles = stack.map((group) => group.title);
+  const allOpen =
+    allTitles.length > 0 && allTitles.every((title) => openTitles.has(title));
 
   const toggle = (title) => {
     setOpenTitles((prev) => {
@@ -190,7 +89,7 @@ function Stack() {
   };
 
   const toggleAll = () => {
-    setOpenTitles(allOpen ? new Set() : new Set(ALL_TITLES));
+    setOpenTitles(allOpen ? new Set() : new Set(allTitles));
   };
 
   return (
@@ -216,7 +115,7 @@ function Stack() {
       </div>
 
       <div className="mt-12 grid gap-x-10 md:grid-cols-2">
-        {STACK_COLUMNS.map((column, index) => (
+        {stackColumns.map((column, index) => (
           <div key={index}>
             {column.map((group) => (
               <StackItem
