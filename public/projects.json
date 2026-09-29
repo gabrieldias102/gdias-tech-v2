@@ -6,7 +6,7 @@
     "url": "https://caderneta.gdias.dev.br",
     "description": "Caderneta é uma aplicação web que permite aos usuários gerenciar suas finanças pessoais, rastrear despesas e definir orçamentos. Ela oferece uma interface intuitiva para que os usuários possam inserir seus dados financeiros e visualizar seus hábitos de gasto por meio de gráficos e relatórios.",
     "stack": ["React", "Node.js", "Express", "PostgreSQL", "Docker"],
-    "repo": "https://github.com/gdias/caderneta",
+    "repo": "https://github.com/gabrieldias102/caderneta",
     "year": 2026
   },
   {
@@ -16,7 +16,7 @@
     "url": "https://terminal.gdias.dev.br",
     "description": "Terminal é portfólio no estilo terminal retrô: tela verde de fósforo, scanlines e navegação por comandos de texto.",
     "stack": ["Vite", "Javascript", "TypeScript", "CSS"],
-    "repo": "https://github.com/gdias/bbs-server-portifolio",
+    "repo": "https://github.com/gabrieldias102/bbs-server-portifolio",
     "year": 2026
   }
 ]
